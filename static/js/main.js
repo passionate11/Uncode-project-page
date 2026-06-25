@@ -53,13 +53,20 @@
   /* ---- copy BibTeX ---- */
   var copyBtn = document.getElementById('copyBib');
   var bibText = document.getElementById('bibText');
+  // expose a hook so i18n.js can refresh the idle label on language switch
+  window.uncodeRefreshCopyLabel = function () {
+    if (copyBtn && !copyBtn.classList.contains('done')) {
+      copyBtn.textContent = (window.uncodeT && window.uncodeT('copy')) || 'Copy';
+    }
+  };
   if (copyBtn && bibText) {
+    var t = function (k, fb) { return (window.uncodeT && window.uncodeT(k)) || fb; };
     copyBtn.addEventListener('click', function () {
       var text = bibText.innerText;
       var done = function () {
-        copyBtn.textContent = 'Copied!';
+        copyBtn.textContent = t('copy.done', 'Copied!');
         copyBtn.classList.add('done');
-        setTimeout(function () { copyBtn.textContent = 'Copy'; copyBtn.classList.remove('done'); }, 1800);
+        setTimeout(function () { copyBtn.textContent = t('copy', 'Copy'); copyBtn.classList.remove('done'); }, 1800);
       };
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(done, fallback);

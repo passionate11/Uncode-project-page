@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="static/css/style.css" />
 <!-- Fallback: if JS is disabled, the scroll-reveal animation never runs — show all content. -->
@@ -72,22 +72,23 @@
 
 <body>
 
-<a class="skip-link" href="#overview">Skip to content</a>
+<a class="skip-link" href="#overview" data-i18n="skip">Skip to content</a>
 
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="nav-inner">
     <a class="nav-brand" href="#top"><span class="brand-badge"><svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="navg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#7c3aed"/></linearGradient></defs><rect width="32" height="32" rx="9" fill="url(#navg)"/><g fill="#fff"><rect x="7" y="7" width="5.5" height="5.5" rx="1.6"/><rect x="13.25" y="13.25" width="5.5" height="5.5" rx="1.6"/><rect x="19.5" y="19.5" width="5.5" height="5.5" rx="1.6"/><rect x="13.25" y="7" width="5.5" height="5.5" rx="1.6" opacity=".3"/><rect x="19.5" y="7" width="5.5" height="5.5" rx="1.6" opacity=".3"/><rect x="19.5" y="13.25" width="5.5" height="5.5" rx="1.6" opacity=".3"/><rect x="7" y="13.25" width="5.5" height="5.5" rx="1.6" opacity=".3"/><rect x="7" y="19.5" width="5.5" height="5.5" rx="1.6" opacity=".3"/><rect x="13.25" y="19.5" width="5.5" height="5.5" rx="1.6" opacity=".3"/></g></svg></span><span class="brand-name uncode">Uncode</span></a>
     <nav class="nav-links" id="navLinks">
-      <a href="#takeaways">Takeaways</a>
-      <a href="#overview">Highlights</a>
-      <a href="#biases">Biases</a>
-      <a href="#method">Method</a>
-      <a href="#trajectory">Trajectory</a>
-      <a href="#results">Results</a>
-      <a href="#poster">Poster</a>
+      <a href="#takeaways" data-i18n="nav.takeaways">Takeaways</a>
+      <a href="#overview" data-i18n="nav.highlights">Highlights</a>
+      <a href="#biases" data-i18n="nav.biases">Biases</a>
+      <a href="#method" data-i18n="nav.method">Method</a>
+      <a href="#trajectory" data-i18n="nav.trajectory">Trajectory</a>
+      <a href="#results" data-i18n="nav.results">Results</a>
+      <a href="#poster" data-i18n="nav.poster">Poster</a>
       <a href="#bibtex">BibTeX</a>
     </nav>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="切换语言 / Switch language" title="中文 / English">中文</button>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
@@ -100,9 +101,9 @@
 <section class="hero">
   <div class="hero-glow"></div>
   <div class="container">
-    <div class="venue-badge">ACL&nbsp;2026 &nbsp;·&nbsp; Main Conference</div>
-    <h1 class="hero-title">Empirical Analysis of Decoding Biases<br/>in Masked Diffusion Models</h1>
-    <p class="hero-subtitle">
+    <div class="venue-badge" data-i18n="hero.venue">ACL&nbsp;2026 &nbsp;·&nbsp; Main Conference</div>
+    <h1 class="hero-title" data-i18n="hero.title">Empirical Analysis of Decoding Biases<br/>in Masked Diffusion Models</h1>
+    <p class="hero-subtitle" data-i18n="hero.subtitle">
       <strong class="uncode">Uncode</strong> — <span class="nowrap">UN</span>masking <span class="nowrap">C</span>alibration for Dec<span class="nowrap">O</span>ding <span class="nowrap">DE</span>biasing:
       a <em>training-free</em> fix for two decoding biases that hold masked diffusion LLMs back.
     </p>
@@ -118,11 +119,11 @@
       <span class="author">Maosong Sun<sup>2</sup></span>
     </div>
     <div class="affils">
-      <span><sup>1</sup>Northeastern University, China</span>
-      <span><sup>2</sup>NLP Lab, Tsinghua University</span>
-      <span><sup>3</sup>Alibaba Group</span>
+      <span><sup>1</sup><span data-i18n="affil.1">Northeastern University, China</span></span>
+      <span><sup>2</sup><span data-i18n="affil.2">NLP Lab, Tsinghua University</span></span>
+      <span><sup>3</sup><span data-i18n="affil.3">Alibaba Group</span></span>
     </div>
-    <div class="corr"><sup>&#8727;</sup>Corresponding author</div>
+    <div class="corr"><sup>&#8727;</sup><span data-i18n="hero.corr">Corresponding author</span></div>
 
     <div class="hero-links">
       <a class="btn btn-primary" href="https://arxiv.org/abs/2508.13021" target="_blank" rel="noopener">
@@ -135,11 +136,11 @@
       </a>
       <a class="btn" href="https://github.com/NEUIR/Uncode" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" class="ic"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.93.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85l-.01 2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z" fill="currentColor"/></svg>
-        Code
+        <span data-i18n="btn.code">Code</span>
       </a>
       <a class="btn" href="static/pdf/uncode_poster.pdf" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" class="ic"><rect x="3" y="4" width="18" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 20h18" stroke="currentColor" stroke-width="1.7"/></svg>
-        Poster
+        <span data-i18n="btn.poster">Poster</span>
       </a>
       <a class="btn" href="#bibtex">
         <svg viewBox="0 0 24 24" class="ic"><path d="M7 7h10M7 11h10M7 15h6" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>
@@ -152,12 +153,12 @@
 <!-- ================= TAKEAWAYS ================= -->
 <section class="section section-alt" id="takeaways">
   <div class="container">
-    <h2 class="kicker">Takeaways</h2>
+    <h2 class="kicker" data-i18n="takeaways.h">Takeaways</h2>
     <ul class="takeaways">
-      <li class="reveal"><span class="tk-num">1</span><div><strong>Two biases, one root cause.</strong> Greedy uncertainty-based decoding systematically prefers boundaries and trivial tokens — both stem from "easy" positions being unmasked first.</div></li>
-      <li class="reveal"><span class="tk-num">2</span><div><strong>Calibrate, don't retrain.</strong> A position prior and a semantics prior, multiplied onto the existing score, are enough to fix it — no fine-tuning, no architecture change.</div></li>
-      <li class="reveal"><span class="tk-num">3</span><div><strong>Closing the gap to autoregressive.</strong> Decoding-side changes alone bring an 8B MDM to near-parity with a strong 7B autoregressive model on reasoning and planning.</div></li>
-      <li class="reveal"><span class="tk-num">4</span><div><strong>Compatible with efficient decoding.</strong> <span class="uncode">Uncode</span> plugs into existing efficient decoding strategies (fast samplers), preserving their 2&times;&ndash;4&times; speedups while improving accuracy.</div></li>
+      <li class="reveal"><span class="tk-num">1</span><div data-i18n="takeaways.1"><strong>Two biases, one root cause.</strong> Greedy uncertainty-based decoding systematically prefers boundaries and trivial tokens — both stem from "easy" positions being unmasked first.</div></li>
+      <li class="reveal"><span class="tk-num">2</span><div data-i18n="takeaways.2"><strong>Calibrate, don't retrain.</strong> A position prior and a semantics prior, multiplied onto the existing score, are enough to fix it — no fine-tuning, no architecture change.</div></li>
+      <li class="reveal"><span class="tk-num">3</span><div data-i18n="takeaways.3"><strong>Closing the gap to autoregressive.</strong> Decoding-side changes alone bring an 8B MDM to near-parity with a strong 7B autoregressive model on reasoning and planning.</div></li>
+      <li class="reveal"><span class="tk-num">4</span><div data-i18n="takeaways.4"><strong>Compatible with efficient decoding.</strong> <span class="uncode">Uncode</span> plugs into existing efficient decoding strategies (fast samplers), preserving their 2&times;&ndash;4&times; speedups while improving accuracy.</div></li>
     </ul>
   </div>
 </section>
@@ -165,23 +166,23 @@
 <!-- ================= HIGHLIGHTS ================= -->
 <section class="section section-tight" id="overview">
   <div class="container">
-    <h2 class="kicker">Highlights</h2>
+    <h2 class="kicker" data-i18n="highlights.h">Highlights</h2>
     <div class="stats">
       <div class="stat reveal">
         <div class="stat-num">&gt;&nbsp;7<span class="u">%</span></div>
-        <div class="stat-cap">average gain over the strongest decoding baseline</div>
+        <div class="stat-cap" data-i18n="stat.1">average gain over the strongest decoding baseline</div>
       </div>
       <div class="stat reveal">
         <div class="stat-num">44.7&nbsp;<span class="approx">&#8776;</span>&nbsp;45.3</div>
-        <div class="stat-cap">LLaDA-1.5&nbsp;+&nbsp;<span class="uncode">Uncode</span> vs. Qwen-2.5-7B (autoregressive)</div>
+        <div class="stat-cap" data-i18n="stat.2">LLaDA-1.5&nbsp;+&nbsp;<span class="uncode">Uncode</span> vs. Qwen-2.5-7B (autoregressive)</div>
       </div>
       <div class="stat reveal">
         <div class="stat-num">3&nbsp;<span class="u">&times;</span>&nbsp;7</div>
-        <div class="stat-cap">MDM backbones &times; reasoning &amp; planning benchmarks</div>
+        <div class="stat-cap" data-i18n="stat.3">MDM backbones &times; reasoning &amp; planning benchmarks</div>
       </div>
       <div class="stat reveal">
         <div class="stat-num">0</div>
-        <div class="stat-cap">extra training — plug-and-play, decoding-side only</div>
+        <div class="stat-cap" data-i18n="stat.4">extra training — plug-and-play, decoding-side only</div>
       </div>
     </div>
   </div>
@@ -190,8 +191,8 @@
 <!-- ================= BIASES ================= -->
 <section class="section section-alt" id="biases">
   <div class="container">
-    <h2 class="kicker center">The Two Decoding Biases</h2>
-    <p class="lead center">
+    <h2 class="kicker center" data-i18n="biases.h">The Two Decoding Biases</h2>
+    <p class="lead center" data-i18n="biases.lead">
       MDMs decode by iterative unmasking — any-order, multi-token, non-autoregressive. The
       <strong>unmasking order is decisive</strong>, and standard MDMs greedily unmask the least-uncertain positions first.
       That greedy heuristic creates two systematic biases.
@@ -199,7 +200,7 @@
 
     <figure class="figure reveal teaser-fig">
       <img class="zoomable" src="static/images/fig1_teaser.png" width="801" height="996" alt="Illustration of decoding biases during reasoning: rigid boundary bias, trivial token bias, and the ideal decoding trajectory." loading="lazy" />
-      <figcaption>
+      <figcaption data-i18n="biases.teaser">
         <strong>The problem in one picture.</strong> Uncertainty-based decoders greedily unmask
         (A)&nbsp;<span class="hl-rose">boundary tokens</span> and (B)&nbsp;<span class="hl-amber">trivial tokens</span> first,
         fixing the answer before the rationale exists. (C)&nbsp;The ideal trajectory establishes the reasoning chain, then resolves the answer.
@@ -208,9 +209,9 @@
 
     <div class="bias-grid">
       <article class="bias-card rose reveal">
-        <div class="bias-tag">Bias #1</div>
-        <h3>Rigid Boundary Bias</h3>
-        <p>
+        <div class="bias-tag" data-i18n="bias1.tag">Bias #1</div>
+        <h3 data-i18n="bias1.h">Rigid Boundary Bias</h3>
+        <p data-i18n="bias1.p">
           Boundary tokens (BOS/EOS and sentence edges) are <strong>consistently decoded first</strong> — a positional
           regularity learned during training — so decoding collapses inward along a fixed &ldquo;U-shaped&rdquo;
           trajectory. The model thus <strong>commits to an answer before the reasoning is built</strong>, with the
@@ -218,14 +219,14 @@
         </p>
         <figure class="figure inset">
           <img class="zoomable" src="static/images/fig2_boundary.png" width="810" height="398" alt="Heatmap of unmasking probability showing a U-shaped boundary-first trajectory, and accuracy comparison across decoding strategies on GSM8K and Sudoku." loading="lazy" />
-          <figcaption>A characteristic U-shaped unmasking pattern; its rigidity helps planning (Sudoku) but hurts step-by-step reasoning (GSM8K).</figcaption>
+          <figcaption data-i18n="bias1.cap">A characteristic U-shaped unmasking pattern; its rigidity helps planning (Sudoku) but hurts step-by-step reasoning (GSM8K).</figcaption>
         </figure>
       </article>
 
       <article class="bias-card amber reveal">
-        <div class="bias-tag">Bias #2</div>
-        <h3>Trivial Token Bias</h3>
-        <p>
+        <div class="bias-tag" data-i18n="bias2.tag">Bias #2</div>
+        <h3 data-i18n="bias2.h">Trivial Token Bias</h3>
+        <p data-i18n="bias2.p">
           High-frequency, low-information tokens (punctuation, spaces, fillers) are easy to predict, so they receive
           low uncertainty and get <strong>over-prioritized</strong> — nearly <strong>40%</strong> of selections vs. ~20% for
           autoregressive models. Decoding budget is spent on surface structure instead of reasoning content, and
@@ -233,7 +234,7 @@
         </p>
         <figure class="figure inset">
           <img class="zoomable" src="static/images/fig3_trivial.png" width="796" height="421" alt="Trivial token ratio over decoding steps stays far above the autoregressive baseline; suppressing trivial tokens monotonically improves GSM8K accuracy." loading="lazy" />
-          <figcaption>Trivial tokens are consistently over-selected; suppressing them monotonically improves GSM8K accuracy.</figcaption>
+          <figcaption data-i18n="bias2.cap">Trivial tokens are consistently over-selected; suppressing them monotonically improves GSM8K accuracy.</figcaption>
         </figure>
       </article>
     </div>
@@ -243,8 +244,8 @@
 <!-- ================= METHOD ================= -->
 <section class="section" id="method">
   <div class="container">
-    <h2 class="kicker center"><span class="uncode">Uncode</span>: Unmasking Calibration</h2>
-    <p class="lead center">
+    <h2 class="kicker center" data-i18n="method.h"><span class="uncode">Uncode</span>: Unmasking Calibration</h2>
+    <p class="lead center" data-i18n="method.lead">
       A lightweight, <strong>training-free</strong> recalibration of the unmasking priority $s^{\,i}_t$ for every masked
       position $i$ at step $t$, multiplying the raw uncertainty score by two complementary priors:
     </p>
@@ -255,9 +256,9 @@
 
     <div class="prior-grid">
       <article class="prior-card reveal">
-        <h3><span class="prior-dot indigo"></span>Positional Trajectory Prior</h3>
+        <h3><span class="prior-dot indigo"></span><span data-i18n="prior1.h">Positional Trajectory Prior</span></h3>
         <div class="eq">$$\mathcal{P}^{\,i} = e^{-\lambda i}$$</div>
-        <p>
+        <p data-i18n="prior1.p">
           Breaks the rigid boundary-first pattern with a position-dependent decay. The coefficient $\lambda$
           interpolates between <strong>flexible any-order</strong> decoding ($\lambda\!\to\!0$) and
           <strong>left-to-right</strong> generation (larger $\lambda$), giving explicit control over causal
@@ -265,9 +266,9 @@
         </p>
       </article>
       <article class="prior-card reveal">
-        <h3><span class="prior-dot violet"></span>Semantic Informativeness Prior</h3>
+        <h3><span class="prior-dot violet"></span><span data-i18n="prior2.h">Semantic Informativeness Prior</span></h3>
         <div class="eq">$$\mathcal{S}^{\,i}_t = \min\!\big(-\log p_{\mathcal{D}'}(\hat{x}^{\,i}_t),\, \alpha\big)$$</div>
-        <p>
+        <p data-i18n="prior2.p">
           Down-weights frequent, low-information tokens via corpus-level <strong>self-information</strong> (estimated on a
           16&nbsp;GB C4 subset), redirecting decoding toward content-bearing tokens. Clipping at $\alpha$ (set to $10$)
           keeps rare tokens from dominating.
@@ -275,7 +276,7 @@
       </article>
     </div>
 
-    <p class="lead center mt">
+    <p class="lead center mt" data-i18n="method.result">
       The result: <span class="uncode">Uncode</span> keeps the parallel, any-order strengths of MDMs while
       <strong>globally reshaping the decoding trajectory</strong> and <strong>promoting informative content</strong> — with
       no retraining and negligible overhead.
@@ -286,15 +287,15 @@
 <!-- ================= TRAJECTORY ================= -->
 <section class="section section-alt" id="trajectory">
   <div class="container">
-    <h2 class="kicker center">Trajectory Reshaping</h2>
-    <p class="lead center">
+    <h2 class="kicker center" data-i18n="traj.h">Trajectory Reshaping</h2>
+    <p class="lead center" data-i18n="traj.lead">
       The clearest evidence of what <span class="uncode">Uncode</span> does: it turns the baseline's rigid <strong>U-shaped</strong> unmasking pattern
       into a clean, content-first <strong>diagonal</strong> trajectory.
     </p>
 
     <figure class="figure reveal">
       <img class="zoomable" src="static/images/fig_trajectory.png" width="1543" height="662" alt="Two unmasking-probability heatmaps: the Confidence baseline forms a U-shape; UNCODE forms a clean diagonal trajectory." loading="lazy" />
-      <figcaption>
+      <figcaption data-i18n="traj.cap1">
         Unmasking probability over decoding steps. <strong>Left:</strong> the Confidence baseline collapses from both
         boundaries inward (U-shape). <strong>Right:</strong> <span class="uncode">Uncode</span> produces a smooth, progressive trajectory that builds
         global context before committing to the answer.
@@ -303,7 +304,7 @@
 
     <figure class="figure reveal mt">
       <img class="zoomable" src="static/images/fig5_dynamics.png" width="844" height="457" alt="Answer-token entropy distribution and average predictive entropy over decoding steps for Confidence vs UNCODE." loading="lazy" />
-      <figcaption>
+      <figcaption data-i18n="traj.cap2">
         <strong>Why it helps.</strong> The baseline guesses answer tokens early, while still uncertain (left, blue cluster).
         <span class="uncode">Uncode</span> <strong>defers answer tokens to later, high-confidence steps</strong> (red) and <strong>reduces global
         uncertainty faster</strong> (right) — reasoning first, answering second.
@@ -315,24 +316,24 @@
 <!-- ================= RESULTS ================= -->
 <section class="section" id="results">
   <div class="container">
-    <h2 class="kicker center">Experimental Results</h2>
-    <p class="lead center">
+    <h2 class="kicker center" data-i18n="results.h">Experimental Results</h2>
+    <p class="lead center" data-i18n="results.lead">
       Three MDM backbones (LLaDA-8B-Instruct, LLaDA-1.5-8B, and Dream-7B), seven benchmarks spanning code, math,
       science and planning, against eight decoding baselines and autoregressive references. The table below shows the
       two LLaDA backbones; full Dream-7B results are reported in the paper.
     </p>
 
-    <h3 class="subhead">Main results — <span class="uncode">Uncode</span> is near-best across the board</h3>
+    <h3 class="subhead" data-i18n="results.sub1">Main results — <span class="uncode">Uncode</span> is near-best across the board</h3>
     <div class="table-scroll reveal">
       <table class="rtab">
         <thead>
           <tr>
-            <th class="lcol">Method</th>
-            <th>HumanEval</th><th>MBPP</th><th>GSM8K</th><th>MATH500</th><th>GPQA</th><th>Countdown</th><th>Sudoku</th><th class="avg">Avg.</th>
+            <th class="lcol" data-i18n="th.method">Method</th>
+            <th>HumanEval</th><th>MBPP</th><th>GSM8K</th><th>MATH500</th><th>GPQA</th><th>Countdown</th><th>Sudoku</th><th class="avg" data-i18n="th.avg">Avg.</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="grouprow"><td colspan="9">Autoregressive LLMs <span class="ref-tag">reference</span></td></tr>
+          <tr class="grouprow"><td colspan="9"><span data-i18n="grp.ar">Autoregressive LLMs</span> <span class="ref-tag" data-i18n="ref.tag">reference</span></td></tr>
           <tr><td class="lcol">LLaMA-3.1-8B</td><td>53.1</td><td>56.7</td><td class="best">83.9</td><td>23.8</td><td>31.0</td><td class="best">27.0</td><td>0.0</td><td class="avg">39.4</td></tr>
           <tr><td class="lcol">Mistral-7B</td><td>43.9</td><td>37.0</td><td>49.4</td><td>7.2</td><td>28.1</td><td>22.7</td><td>0.0</td><td class="avg">26.9</td></tr>
           <tr><td class="lcol">Qwen-2.5-7B</td><td class="best">78.1</td><td class="best">62.8</td><td>71.9</td><td class="best">64.2</td><td class="best">32.8</td><td>7.7</td><td>0.0</td><td class="avg best">45.3</td></tr>
@@ -359,24 +360,24 @@
         </tbody>
       </table>
     </div>
-    <p class="tnote">
+    <p class="tnote" data-i18n="tnote.1">
       Pass@1 for code, accuracy elsewhere. <span class="chip best-chip">Bold</span> = best within each model group;
       <span class="chip uncode-chip">shaded</span> rows are <span class="uncode">Uncode</span>. <span class="uncode">Uncode</span> wins nearly every column on both MDM backbones,
       and LLaDA-1.5&nbsp;+&nbsp;<span class="uncode">Uncode</span> (44.7) is comparable to the much-tuned autoregressive Qwen-2.5-7B (45.3).
     </p>
 
-    <h3 class="subhead">Ablation — both priors matter</h3>
+    <h3 class="subhead" data-i18n="results.sub2">Ablation — both priors matter</h3>
     <figure class="figure narrow-fig reveal">
       <img class="zoomable" src="static/images/fig4_ablation.png" width="731" height="353" alt="Ablation bar chart: removing the positional prior or the semantic prior both reduce average performance on LLaDA-8B-Instruct and LLaDA-1.5-8B." loading="lazy" />
-      <figcaption>
+      <figcaption data-i18n="ablation.cap">
         Removing the <strong>positional trajectory prior</strong> causes the largest drop (42.7&nbsp;&rarr;&nbsp;34.9 and
         44.7&nbsp;&rarr;&nbsp;35.5); the <strong>semantic informativeness prior</strong> adds a further +2.3 / +2.7.
         Both are necessary.
       </figcaption>
     </figure>
 
-    <h3 class="subhead">Plug-and-play with efficient samplers</h3>
-    <p class="lead">
+    <h3 class="subhead" data-i18n="results.sub3">Plug-and-play with efficient samplers</h3>
+    <p class="lead" data-i18n="plug.lead">
       <span class="uncode">Uncode</span> is an unmasking <em>policy</em>, so it drops into existing fast decoders — improving quality by over
       <strong>3%</strong> on average while preserving their <strong>2&times;–4&times;</strong> speedups.
     </p>
@@ -384,8 +385,8 @@
       <table class="rtab compact">
         <thead>
           <tr>
-            <th class="lcol">Sampler</th>
-            <th>HumanEval</th><th>MBPP</th><th>GSM8K</th><th>MATH500</th><th>GPQA</th><th>Countdown</th><th>Sudoku</th><th class="avg">Avg.</th><th>Speedup</th>
+            <th class="lcol" data-i18n="th.sampler">Sampler</th>
+            <th>HumanEval</th><th>MBPP</th><th>GSM8K</th><th>MATH500</th><th>GPQA</th><th>Countdown</th><th>Sudoku</th><th class="avg" data-i18n="th.avg">Avg.</th><th data-i18n="th.speedup">Speedup</th>
           </tr>
         </thead>
         <tbody>
@@ -398,17 +399,17 @@
         </tbody>
       </table>
     </div>
-    <p class="tnote">Results on LLaDA-8B-Instruct. Speedup is relative to vanilla full-step decoding.</p>
+    <p class="tnote" data-i18n="tnote.2">Results on LLaDA-8B-Instruct. Speedup is relative to vanilla full-step decoding.</p>
   </div>
 </section>
 
 <!-- ================= POSTER ================= -->
 <section class="section" id="poster">
   <div class="container">
-    <h2 class="kicker center">ACL 2026 Poster</h2>
+    <h2 class="kicker center" data-i18n="poster.h">ACL 2026 Poster</h2>
     <figure class="figure poster-fig reveal">
       <img class="zoomable" src="static/images/poster_web.png" width="1800" height="1190" data-zoom="static/images/poster.png" alt="UNCODE ACL 2026 poster overview." loading="lazy" />
-      <figcaption>Click to zoom, or <a href="static/pdf/uncode_poster.pdf" target="_blank" rel="noopener">open the full-resolution PDF&nbsp;&rarr;</a></figcaption>
+      <figcaption data-i18n="poster.cap">Click to zoom, or <a href="static/pdf/uncode_poster.pdf" target="_blank" rel="noopener">open the full-resolution PDF&nbsp;&rarr;</a></figcaption>
     </figure>
   </div>
 </section>
@@ -418,7 +419,7 @@
   <div class="container">
     <h2 class="kicker center">BibTeX</h2>
     <div class="bib-wrap reveal">
-      <button class="copy-btn" id="copyBib" aria-label="Copy BibTeX">Copy</button>
+      <button class="copy-btn" id="copyBib" aria-label="Copy BibTeX" data-i18n="copy">Copy</button>
       <pre id="bibText">@inproceedings{huang-etal-2026-empirical,
     title = "Empirical Analysis of Decoding Biases in Masked Diffusion Models",
     author = "Huang, Pengcheng  and Liu, Tianming  and Liu, Zhenghao  and Yan, Yukun  and Wang, Shuo  and Xiao, Tong  and Chen, Zulong  and Sun, Maosong",
@@ -439,15 +440,15 @@
     <p class="foot-links">
       <a href="https://arxiv.org/abs/2508.13021" target="_blank" rel="noopener">arXiv</a> ·
       <a href="https://aclanthology.org/2026.acl-long.311/" target="_blank" rel="noopener">ACL Anthology</a> ·
-      <a href="https://github.com/NEUIR/Uncode" target="_blank" rel="noopener">Code</a> ·
-      <a href="static/pdf/uncode_poster.pdf" target="_blank" rel="noopener">Poster</a> ·
-      <a href="mailto:pengcheng.neu@outlook.com">Contact</a>
+      <a href="https://github.com/NEUIR/Uncode" target="_blank" rel="noopener" data-i18n="btn.code">Code</a> ·
+      <a href="static/pdf/uncode_poster.pdf" target="_blank" rel="noopener" data-i18n="btn.poster">Poster</a> ·
+      <a href="mailto:pengcheng.neu@outlook.com" data-i18n="foot.contact">Contact</a>
     </p>
-    <p class="foot-meta">
+    <p class="foot-meta" data-i18n="foot.meta">
       Northeastern University · NLP Lab, Tsinghua University · Alibaba Group<br/>
       Correspondence: <a href="mailto:pengcheng.neu@outlook.com">pengcheng.neu@outlook.com</a>
     </p>
-    <p class="foot-fine">Project page for "Empirical Analysis of Decoding Biases in Masked Diffusion Models" (ACL 2026).</p>
+    <p class="foot-fine" data-i18n="foot.fine">Project page for "Empirical Analysis of Decoding Biases in Masked Diffusion Models" (ACL 2026).</p>
   </div>
 </footer>
 
@@ -461,6 +462,7 @@
   <img src="" alt="" id="lightboxImg" />
 </div>
 
+<script src="static/js/i18n.js"></script>
 <script src="static/js/main.js"></script>
 </body>
 </html>

@@ -26,8 +26,8 @@
   --shadow:     0 1px 2px rgba(20,24,40,.05), 0 8px 30px rgba(20,24,40,.06);
   --shadow-lg:  0 20px 60px rgba(30,24,80,.16);
   --maxw:       980px;
-  --font:       'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --serif:      'Newsreader', Georgia, 'Times New Roman', serif;
+  --font:       'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --serif:      'Newsreader', Georgia, 'Times New Roman', 'Noto Sans SC', serif;
 }
 
 * { box-sizing: border-box; }
@@ -70,13 +70,22 @@ a:hover { text-decoration: underline; }
 
 /* small-caps brand wordmark: "Uncode" -> Uɴᴄᴏᴅᴇ */
 .uncode { font-variant: small-caps; font-feature-settings: "smcp" 1; letter-spacing: .015em; }
-.nav-links { display: flex; gap: 6px; }
+.nav-links { display: flex; gap: 6px; margin-left: auto; }
 .nav-links a {
   color: var(--ink-soft); font-weight: 500; font-size: 14.5px;
   padding: 7px 12px; border-radius: 8px; transition: .15s;
 }
 .nav-links a:hover { color: var(--ink); background: var(--bg-alt); text-decoration: none; }
 .nav-links a.active { color: var(--primary); background: var(--bg-tint); }
+.lang-toggle {
+  flex: none; margin-left: 12px; cursor: pointer; line-height: 1;
+  font-family: var(--font); font-weight: 700; font-size: 13px; letter-spacing: .01em;
+  color: var(--ink-soft); background: var(--bg-alt);
+  border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px;
+  transition: .15s;
+}
+.lang-toggle:hover { color: var(--primary); border-color: #d3d6e2; background: var(--bg-tint); }
+.lang-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; border-radius: 2px; transition: .2s; }
 
@@ -323,6 +332,7 @@ a:hover { text-decoration: underline; }
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 10px 12px; }
+  .lang-toggle { margin-left: auto; margin-right: 4px; }
   .nav-toggle { display: block; }
 }
 @media (max-width: 680px) {
