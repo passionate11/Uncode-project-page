@@ -174,6 +174,45 @@
       zh: '《掩码扩散模型中解码偏差的实证分析》（ACL 2026）项目主页。'
     },
 
+    /* ---- abstract / FAQ / footer additions ---- */
+    'abstract.h': { en: 'Abstract', zh: '摘要' },
+    'abstract.p': {
+      en: 'Masked Diffusion Models (MDMs) have recently emerged as a promising non-autoregressive paradigm for sequence generation. However, their performance is highly sensitive to the choice of decoding strategy. In this work, we reveal that prevalent uncertainty-based decoding strategies induce two decoding biases in MDMs: rigid boundary bias and trivial token bias. These biases limit the model’s reasoning ability and ultimately degrade generation quality. To address these challenges, we propose UNmasking Calibration for DecOding DEbiasing (UNCODE), a decoding calibration framework that regularizes uncertainty-based decoding by incorporating two complementary priors to shape global decoding trajectories and promote content informativeness. Extensive experiments on three advanced MDMs across seven reasoning- and planning-intensive benchmarks demonstrate that UNCODE consistently outperforms existing decoding strategies by more than 7%, while achieving performance comparable to autoregressive models of similar parameter scales. The code is publicly available at https://github.com/NEUIR/Uncode.',
+      zh: '掩码扩散模型（MDM）是近来很有前景的非自回归序列生成范式，但其性能对解码策略的选择高度敏感。本文揭示，主流的基于不确定性的解码策略会在 MDM 中引入两种解码偏差：刚性边界偏差和平凡词元偏差。这些偏差限制了模型的推理能力，最终降低生成质量。为此，我们提出面向解码去偏的去掩码校准框架 UNCODE（UNmasking Calibration for DecOding DEbiasing），它在基于不确定性的解码中引入两种互补的先验，用来塑造全局解码轨迹并提升内容的信息量。在三个先进 MDM 和七个推理、规划密集型基准上的大量实验表明，UNCODE 稳定地超过现有解码策略 7% 以上，并达到与同等参数规模自回归模型相当的性能。代码已公开：https://github.com/NEUIR/Uncode。'
+    },
+    'faq.h': { en: 'FAQ', zh: '常见问题' },
+    'faq.q1': { en: 'What is UNCODE?', zh: 'UNCODE 是什么？' },
+    'faq.a1': {
+      en: 'UNCODE (UNmasking Calibration for DecOding DEbiasing) is a training-free decoding method for masked diffusion language models such as LLaDA and Dream, from the ACL 2026 paper by Pengcheng Huang et al. It multiplies the uncertainty score that decides which masked position to unmask next by a positional trajectory prior and a semantic informativeness prior. This fixes two decoding biases and improves reasoning and planning by more than 7% over existing decoding strategies.',
+      zh: 'UNCODE（UNmasking Calibration for DecOding DEbiasing）是 ACL 2026 论文（第一作者黄鹏程）提出的一种免训练解码方法，面向 LLaDA、Dream 等掩码扩散语言模型。它在决定下一步去掩码位置的不确定性分数上乘以位置轨迹先验和语义信息量先验，修正两种解码偏差，在推理与规划任务上比现有解码策略高出 7% 以上。'
+    },
+    'faq.q2': { en: 'What are the rigid boundary bias and the trivial token bias?', zh: '什么是刚性边界偏差和平凡词元偏差？' },
+    'faq.a2': {
+      en: 'Both come from greedily unmasking the least-uncertain positions first. With the rigid boundary bias, boundary tokens are decoded first, so decoding collapses inward along a fixed U-shaped trajectory and the model commits to an answer before the reasoning exists. With the trivial token bias, frequent low-information tokens such as punctuation and spaces are easy to predict, so they take nearly 40% of selections, versus about 20% for autoregressive models.',
+      zh: '两者都源于贪心地先解码不确定性最低的位置。刚性边界偏差：边界词元总被最先解码，解码沿固定的 U 形轨迹向内坍缩，模型在推理形成之前就锁定了答案。平凡词元偏差：标点、空格等高频低信息量词元容易预测，占到近 40% 的选择，而自回归模型约为 20%。'
+    },
+    'faq.q3': { en: 'Does UNCODE need training, and does it slow decoding down?', zh: 'UNCODE 需要训练吗？会拖慢解码吗？' },
+    'faq.a3': {
+      en: 'It needs no training and no architecture change; it only recalibrates the unmasking order. It also plugs into efficient samplers (&tau;-leaping, EB-Sampler, Fast-dLLM), improving their accuracy while keeping their 2&times;&ndash;4&times; speedups.',
+      zh: '不需要训练，也不改模型结构，只重新校准去掩码顺序。它还能接入 &tau;-leaping、EB-Sampler、Fast-dLLM 等高效采样器，在保留其 2&ndash;4 倍加速的同时提升准确率。'
+    },
+    'faq.q4': { en: 'Which models and benchmarks were used?', zh: '用了哪些模型和基准？' },
+    'faq.a4': {
+      en: 'Three masked diffusion models (LLaDA-8B-Instruct, LLaDA-1.5-8B and Dream-7B) on seven benchmarks: HumanEval, MBPP, GSM8K, MATH500, GPQA, Countdown and Sudoku. With UNCODE, LLaDA-1.5-8B averages 44.7, close to the autoregressive Qwen-2.5-7B at 45.3.',
+      zh: '三个掩码扩散模型（LLaDA-8B-Instruct、LLaDA-1.5-8B、Dream-7B），七个基准：HumanEval、MBPP、GSM8K、MATH500、GPQA、Countdown 和数独。加上 UNCODE 后，LLaDA-1.5-8B 平均得分 44.7，接近自回归模型 Qwen-2.5-7B 的 45.3。'
+    },
+    'faq.q5': { en: 'Is UNCODE the same work as PC-Sampler?', zh: 'UNCODE 和 PC-Sampler 是同一个工作吗？' },
+    'faq.a5': {
+      en: 'Yes. Earlier arXiv versions of arXiv:2508.13021 were titled &ldquo;PC-Sampler: Position-Aware Calibration of Decoding Bias in Masked Diffusion Models&rdquo;, and the code repository was renamed from NEUIR/PC-Sampler to NEUIR/Uncode. The ACL 2026 version is titled &ldquo;Empirical Analysis of Decoding Biases in Masked Diffusion Models&rdquo;.',
+      zh: '是的。arXiv:2508.13021 的早期版本标题为“PC-Sampler: Position-Aware Calibration of Decoding Bias in Masked Diffusion Models”，代码仓库也从 NEUIR/PC-Sampler 更名为 NEUIR/Uncode。ACL 2026 正式版标题为“Empirical Analysis of Decoding Biases in Masked Diffusion Models”。'
+    },
+    'faq.q6': { en: 'Where is the code?', zh: '代码在哪里？' },
+    'faq.a6': {
+      en: 'Code: <a href="https://github.com/NEUIR/Uncode" target="_blank" rel="noopener">github.com/NEUIR/Uncode</a>. Questions: pengcheng.neu@outlook.com.',
+      zh: '代码：<a href="https://github.com/NEUIR/Uncode" target="_blank" rel="noopener">github.com/NEUIR/Uncode</a>。问题请联系 pengcheng.neu@outlook.com。'
+    },
+    'foot.more': { en: 'More from the first author, <a href="https://passionate11.github.io/">Pengcheng Huang</a>:', zh: '第一作者<a href="https://passionate11.github.io/">黄鹏程</a>的其他工作：' },
+
     /* ---- dynamic (used by main.js) ---- */
     'copy':      { en: 'Copy', zh: '复制' },
     'bib.note':  { en: 'UNCODE was previously released as <strong>PC-Sampler</strong> (Position-aware Calibration of Decoding Bias, <a href="https://arxiv.org/abs/2508.13021v1" target="_blank" rel="noopener">arXiv 2508.13021 v1</a>). Please cite the ACL 2026 version above.', zh: 'UNCODE 的早期版本以 <strong>PC-Sampler</strong>(Position-aware Calibration of Decoding Bias,<a href="https://arxiv.org/abs/2508.13021v1" target="_blank" rel="noopener">arXiv 2508.13021 v1</a>)发布。引用请使用上方 ACL 2026 正式版。' },

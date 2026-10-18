@@ -6,6 +6,8 @@
 <title>UNCODE (PC-Sampler) · Empirical Analysis of Decoding Biases in Masked Diffusion Models</title>
 <meta name="description" content="UNCODE (previously released as PC-Sampler) is a training-free decoding-calibration method for masked diffusion language models such as LLaDA and Dream: it fixes the rigid boundary bias and trivial token bias of uncertainty-based samplers, improving reasoning and planning by over 7% across 3 MDMs and 7 benchmarks. ACL 2026." />
 <link rel="canonical" href="https://passionate11.github.io/Uncode-project-page/" />
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1" />
+<link rel="author" href="https://passionate11.github.io/" />
 <meta name="author" content="Pengcheng Huang, Tianming Liu, Zhenghao Liu, Yukun Yan, Shuo Wang, Tong Xiao, Zulong Chen, Maosong Sun" />
 <meta name="theme-color" content="#4f46e5" />
 <meta name="color-scheme" content="light only" />
@@ -13,6 +15,7 @@
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="Pengcheng Huang" />
 <meta property="og:url" content="https://passionate11.github.io/Uncode-project-page/" />
 <meta property="og:title" content="UNCODE · Empirical Analysis of Decoding Biases in Masked Diffusion Models" />
 <meta property="og:description" content="A training-free unmasking-calibration framework that fixes two decoding biases in masked diffusion models, improving reasoning & planning by over 7%. ACL 2026." />
@@ -71,7 +74,7 @@
   "alternateName": ["UNCODE", "PC-Sampler", "PC-Sampler: Position-Aware Calibration of Decoding Bias in Masked Diffusion Models"],
   "headline": "Empirical Analysis of Decoding Biases in Masked Diffusion Models",
   "description": "UNCODE (previously released as PC-Sampler, arXiv 2508.13021 v1) is a training-free decoding-calibration method for masked diffusion language models such as LLaDA and Dream that fixes two decoding biases of uncertainty-based samplers, improving reasoning and planning by over 7% across 3 MDMs and 7 benchmarks.",
-  "abstract": "Uncertainty-based decoding strategies induce two decoding biases in masked diffusion models — a rigid boundary bias and a trivial token bias. UNCODE (UNmasking Calibration for DecOding DEbiasing) is a training-free decoding-calibration framework that regularizes uncertainty-based decoding with two complementary priors, improving reasoning and planning by more than 7% across three MDMs and seven benchmarks.",
+  "abstract": "Masked Diffusion Models (MDMs) have recently emerged as a promising non-autoregressive paradigm for sequence generation. However, their performance is highly sensitive to the choice of decoding strategy. In this work, we reveal that prevalent uncertainty-based decoding strategies induce two decoding biases in MDMs: rigid boundary bias and trivial token bias. These biases limit the model’s reasoning ability and ultimately degrade generation quality. To address these challenges, we propose UNmasking Calibration for DecOding DEbiasing (UNCODE), a decoding calibration framework that regularizes uncertainty-based decoding by incorporating two complementary priors to shape global decoding trajectories and promote content informativeness. Extensive experiments on three advanced MDMs across seven reasoning- and planning-intensive benchmarks demonstrate that UNCODE consistently outperforms existing decoding strategies by more than 7%, while achieving performance comparable to autoregressive models of similar parameter scales. The code is publicly available at https://github.com/NEUIR/Uncode.",
   "inLanguage": "en",
   "keywords": "masked diffusion models, diffusion language models, decoding bias, unmasking calibration, UNCODE, PC-Sampler, LLaDA, Dream, non-autoregressive generation, reasoning",
   "datePublished": "2026-07",
@@ -175,6 +178,14 @@
         BibTeX
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ================= ABSTRACT ================= -->
+<section class="section" id="abstract">
+  <div class="container">
+    <h2 class="kicker" data-i18n="abstract.h">Abstract</h2>
+    <p class="abstract" data-i18n="abstract.p">Masked Diffusion Models (MDMs) have recently emerged as a promising non-autoregressive paradigm for sequence generation. However, their performance is highly sensitive to the choice of decoding strategy. In this work, we reveal that prevalent uncertainty-based decoding strategies induce two decoding biases in MDMs: rigid boundary bias and trivial token bias. These biases limit the model’s reasoning ability and ultimately degrade generation quality. To address these challenges, we propose UNmasking Calibration for DecOding DEbiasing (UNCODE), a decoding calibration framework that regularizes uncertainty-based decoding by incorporating two complementary priors to shape global decoding trajectories and promote content informativeness. Extensive experiments on three advanced MDMs across seven reasoning- and planning-intensive benchmarks demonstrate that UNCODE consistently outperforms existing decoding strategies by more than 7%, while achieving performance comparable to autoregressive models of similar parameter scales. The code is publicly available at https://github.com/NEUIR/Uncode.</p>
   </div>
 </section>
 
@@ -431,6 +442,39 @@
   </div>
 </section>
 
+<!-- ================= FAQ ================= -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <h2 class="kicker" data-i18n="faq.h">FAQ</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3 data-i18n="faq.q1">What is UNCODE?</h3>
+        <p data-i18n="faq.a1">UNCODE (UNmasking Calibration for DecOding DEbiasing) is a training-free decoding method for masked diffusion language models such as LLaDA and Dream, from the ACL 2026 paper by Pengcheng Huang et al. It multiplies the uncertainty score that decides which masked position to unmask next by a positional trajectory prior and a semantic informativeness prior. This fixes two decoding biases and improves reasoning and planning by more than 7% over existing decoding strategies.</p>
+      </div>
+      <div class="faq-item">
+        <h3 data-i18n="faq.q2">What are the rigid boundary bias and the trivial token bias?</h3>
+        <p data-i18n="faq.a2">Both come from greedily unmasking the least-uncertain positions first. With the rigid boundary bias, boundary tokens are decoded first, so decoding collapses inward along a fixed U-shaped trajectory and the model commits to an answer before the reasoning exists. With the trivial token bias, frequent low-information tokens such as punctuation and spaces are easy to predict, so they take nearly 40% of selections, versus about 20% for autoregressive models.</p>
+      </div>
+      <div class="faq-item">
+        <h3 data-i18n="faq.q3">Does UNCODE need training, and does it slow decoding down?</h3>
+        <p data-i18n="faq.a3">It needs no training and no architecture change; it only recalibrates the unmasking order. It also plugs into efficient samplers (&tau;-leaping, EB-Sampler, Fast-dLLM), improving their accuracy while keeping their 2&times;&ndash;4&times; speedups.</p>
+      </div>
+      <div class="faq-item">
+        <h3 data-i18n="faq.q4">Which models and benchmarks were used?</h3>
+        <p data-i18n="faq.a4">Three masked diffusion models (LLaDA-8B-Instruct, LLaDA-1.5-8B and Dream-7B) on seven benchmarks: HumanEval, MBPP, GSM8K, MATH500, GPQA, Countdown and Sudoku. With UNCODE, LLaDA-1.5-8B averages 44.7, close to the autoregressive Qwen-2.5-7B at 45.3.</p>
+      </div>
+      <div class="faq-item">
+        <h3 data-i18n="faq.q5">Is UNCODE the same work as PC-Sampler?</h3>
+        <p data-i18n="faq.a5">Yes. Earlier arXiv versions of arXiv:2508.13021 were titled &ldquo;PC-Sampler: Position-Aware Calibration of Decoding Bias in Masked Diffusion Models&rdquo;, and the code repository was renamed from NEUIR/PC-Sampler to NEUIR/Uncode. The ACL 2026 version is titled &ldquo;Empirical Analysis of Decoding Biases in Masked Diffusion Models&rdquo;.</p>
+      </div>
+      <div class="faq-item">
+        <h3 data-i18n="faq.q6">Where is the code?</h3>
+        <p data-i18n="faq.a6">Code: <a href="https://github.com/NEUIR/Uncode" target="_blank" rel="noopener">github.com/NEUIR/Uncode</a>. Questions: pengcheng.neu@outlook.com.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= POSTER ================= -->
 <section class="section" id="poster">
   <div class="container">
@@ -464,6 +508,16 @@
   </div>
 </section>
 
+<!-- ================= 中文简介 ================= -->
+<section class="section" id="zh" lang="zh-CN">
+  <div class="container zh-summary">
+    <h2 class="kicker">中文简介</h2>
+    <p><strong>UNCODE：掩码扩散模型中解码偏差的实证分析</strong>（ACL 2026 主会），第一作者为东北大学黄鹏程（Pengcheng Huang），通讯作者为刘正皓，合作单位包括清华大学和阿里巴巴。</p>
+    <p>掩码扩散模型（如 LLaDA、Dream）通过迭代去掩码生成文本，去掩码的顺序决定生成质量。论文发现，常用的基于不确定性的解码会带来两种偏差：刚性边界偏差（先解码边界，答案在推理之前就被确定）和平凡词元偏差（标点、空格等低信息量词元被过度优先）。</p>
+    <p>UNCODE（arXiv 早期版本名为 PC-Sampler）是一种免训练的解码校准方法：在原有不确定性分数上乘以位置轨迹先验和语义信息量先验。在 LLaDA-8B-Instruct、LLaDA-1.5-8B、Dream-7B 三个模型和七个代码、数学、科学、规划基准上，它比现有解码策略高出 7% 以上；LLaDA-1.5-8B 加上 UNCODE 后的平均分（44.7）与自回归模型 Qwen-2.5-7B（45.3）相当。代码见 GitHub NEUIR/Uncode。</p>
+  </div>
+</section>
+
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="container narrow">
@@ -478,6 +532,11 @@
       Northeastern University · NLP Lab, Tsinghua University · Alibaba Group<br/>
       Correspondence: <a href="mailto:pengcheng.neu@outlook.com">pengcheng.neu@outlook.com</a>
     </p>
+    <p class="foot-meta" data-i18n="foot.more">More from the first author, <a href="https://passionate11.github.io/">Pengcheng Huang</a>:</p>
+    <ul class="related">
+      <li><a href="https://passionate11.github.io/ParamMute-project-page/">ParamMute: Suppressing Knowledge-Critical FFNs for Faithful Retrieval-Augmented Generation</a> (NeurIPS 2025)</li>
+      <li><a href="https://passionate11.github.io/Translate-and-Revise-project-page/">Translate-and-Revise: Boosting Large Language Models for Constrained Translation</a> (CCL 2024)</li>
+    </ul>
     <p class="foot-fine" data-i18n="foot.fine">Project page for "Empirical Analysis of Decoding Biases in Masked Diffusion Models" (ACL 2026).</p>
   </div>
 </footer>

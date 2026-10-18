@@ -386,3 +386,13 @@ a:hover { text-decoration: underline; }
   a[href]:not(.btn)::after { content: ""; }
   .bib-wrap pre { background: #f4f4f7 !important; color: #1b1f2e !important; border: 1px solid var(--line); }
 }
+
+/* ---------------- FAQ / Chinese summary / related links ---------------- */
+.faq { display: grid; gap: 14px; }
+.faq-item { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 18px 22px; box-shadow: var(--shadow); }
+.faq-item h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; color: var(--ink); }
+.faq-item p { margin: 0; color: var(--ink-soft); font-size: 15.5px; }
+.zh-summary p { font-size: 16px; line-height: 1.9; color: var(--ink-soft); margin: 0 0 12px; }
+.zh-summary strong { color: var(--ink); }
+.related { margin: 0 0 16px; padding-left: 18px; color: var(--ink-soft); font-size: 14.5px; }
+.related li { margin: 4px 0; }
