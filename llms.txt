@@ -1,0 +1,40 @@
+# UNCODE (previously PC-Sampler)
+
+> UNCODE (UNmasking Calibration for DecOding DEbiasing), previously released as PC-Sampler (Position-aware Calibration of Decoding Bias), is a training-free decoding-calibration method for masked diffusion language models (MDMs) such as LLaDA and Dream. It fixes two systematic biases of uncertainty-based samplers and improves reasoning and planning by over 7% across 3 MDMs and 7 benchmarks. Paper: "Empirical Analysis of Decoding Biases in Masked Diffusion Models" (Huang et al., ACL 2026 Main Conference, arXiv:2508.13021).
+
+Uncertainty-based samplers (confidence, entropy, margin) applied to masked diffusion models show two decoding biases:
+
+- Rigid boundary bias: boundary tokens (BOS/EOS, sentence edges) are decoded first, collapsing decoding into a fixed U-shaped trajectory that commits to an answer before the reasoning is built.
+- Trivial token bias: high-frequency, low-information tokens (punctuation, spaces, fillers) are over-prioritized, spending the decoding budget on surface structure instead of content.
+
+UNCODE multiplies two priors onto the existing uncertainty score — a position-aware prior that regulates the global decoding trajectory and a content-aware informativeness prior that down-weights trivial tokens. No fine-tuning and no architecture change are needed.
+
+Key results:
+
+- LLaDA-8B-Instruct: average over HumanEval, MBPP, GSM8K, MATH500, GPQA, Countdown and Sudoku rises from 33.6 (confidence sampler) to 42.7 with UNCODE, beating entropy, margin, EB-Sampler, Semi-AR and Fast-dLLM decoding.
+- LLaDA-1.5-8B + UNCODE reaches 44.7 average, comparable to the autoregressive Qwen-2.5-7B (45.3).
+- UNCODE is compatible with efficient decoding (fast samplers), preserving their 2x-4x speedups while improving accuracy.
+
+## Links
+
+- [Paper (ACL Anthology)](https://aclanthology.org/2026.acl-long.311/): official ACL 2026 version, DOI 10.18653/v1/2026.acl-long.311
+- [Paper (arXiv 2508.13021)](https://arxiv.org/abs/2508.13021): v1 is titled "PC-Sampler: Position-Aware Calibration of Decoding Bias in Masked Diffusion Models"
+- [Code (GitHub)](https://github.com/NEUIR/Uncode): evaluation scripts for UNCODE and baseline samplers
+- [Hugging Face paper page](https://huggingface.co/papers/2508.13021)
+- [Project page](https://passionate11.github.io/Uncode-project-page/)
+- [First author](https://passionate11.github.io/): Pengcheng Huang (Northeastern University)
+
+## Citation
+
+```bibtex
+@inproceedings{huang-etal-2026-empirical,
+    title = "Empirical Analysis of Decoding Biases in Masked Diffusion Models",
+    author = "Huang, Pengcheng and Liu, Tianming and Liu, Zhenghao and Yan, Yukun and Wang, Shuo and Xiao, Tong and Chen, Zulong and Sun, Maosong",
+    booktitle = "Proceedings of the 64th Annual Meeting of the {A}ssociation for {C}omputational {L}inguistics (Volume 1: Long Papers)",
+    year = "2026",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.acl-long.311/",
+    doi = "10.18653/v1/2026.acl-long.311",
+    pages = "6853--6876"
+}
+```

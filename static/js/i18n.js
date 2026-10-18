@@ -176,6 +176,7 @@
 
     /* ---- dynamic (used by main.js) ---- */
     'copy':      { en: 'Copy', zh: '复制' },
+    'bib.note':  { en: 'UNCODE was previously released as <strong>PC-Sampler</strong> (Position-aware Calibration of Decoding Bias, <a href="https://arxiv.org/abs/2508.13021v1" target="_blank" rel="noopener">arXiv 2508.13021 v1</a>). Please cite the ACL 2026 version above.', zh: 'UNCODE 的早期版本以 <strong>PC-Sampler</strong>(Position-aware Calibration of Decoding Bias,<a href="https://arxiv.org/abs/2508.13021v1" target="_blank" rel="noopener">arXiv 2508.13021 v1</a>)发布。引用请使用上方 ACL 2026 正式版。' },
     'copy.done': { en: 'Copied!', zh: '已复制！' }
   };
 

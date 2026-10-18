@@ -3,12 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>UNCODE · Empirical Analysis of Decoding Biases in Masked Diffusion Models</title>
-<meta name="description" content="UNCODE: a lightweight, training-free unmasking-calibration framework that fixes the rigid boundary bias and trivial token bias of masked diffusion models, improving reasoning and planning by over 7%. ACL 2026." />
+<title>UNCODE (PC-Sampler) · Empirical Analysis of Decoding Biases in Masked Diffusion Models</title>
+<meta name="description" content="UNCODE (previously released as PC-Sampler) is a training-free decoding-calibration method for masked diffusion language models such as LLaDA and Dream: it fixes the rigid boundary bias and trivial token bias of uncertainty-based samplers, improving reasoning and planning by over 7% across 3 MDMs and 7 benchmarks. ACL 2026." />
+<link rel="canonical" href="https://passionate11.github.io/Uncode-project-page/" />
 <meta name="author" content="Pengcheng Huang, Tianming Liu, Zhenghao Liu, Yukun Yan, Shuo Wang, Tong Xiao, Zulong Chen, Maosong Sun" />
 <meta name="theme-color" content="#4f46e5" />
 <meta name="color-scheme" content="light only" />
-<meta name="keywords" content="masked diffusion models, decoding bias, unmasking calibration, UNCODE, non-autoregressive generation, reasoning, ACL 2026" />
+<meta name="keywords" content="masked diffusion models, decoding bias, unmasking calibration, UNCODE, PC-Sampler, position-aware calibration, diffusion language models, LLaDA, Dream, non-autoregressive generation, reasoning, ACL 2026" />
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website" />
@@ -18,6 +19,27 @@
 <meta property="og:image" content="https://passionate11.github.io/Uncode-project-page/static/images/fig1_teaser.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://passionate11.github.io/Uncode-project-page/static/images/fig1_teaser.png" />
+
+<!-- Google Scholar (Highwire Press) tags -->
+<meta name="citation_title" content="Empirical Analysis of Decoding Biases in Masked Diffusion Models" />
+<meta name="citation_author" content="Huang, Pengcheng" />
+<meta name="citation_author" content="Liu, Tianming" />
+<meta name="citation_author" content="Liu, Zhenghao" />
+<meta name="citation_author" content="Yan, Yukun" />
+<meta name="citation_author" content="Wang, Shuo" />
+<meta name="citation_author" content="Xiao, Tong" />
+<meta name="citation_author" content="Chen, Zulong" />
+<meta name="citation_author" content="Sun, Maosong" />
+<meta name="citation_publication_date" content="2026/07" />
+<meta name="citation_conference_title" content="Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)" />
+<meta name="citation_publisher" content="Association for Computational Linguistics" />
+<meta name="citation_firstpage" content="6853" />
+<meta name="citation_lastpage" content="6876" />
+<meta name="citation_doi" content="10.18653/v1/2026.acl-long.311" />
+<meta name="citation_isbn" content="979-8-89176-390-6" />
+<meta name="citation_arxiv_id" content="2508.13021" />
+<meta name="citation_abstract_html_url" content="https://aclanthology.org/2026.acl-long.311/" />
+<meta name="citation_pdf_url" content="https://aclanthology.org/2026.acl-long.311.pdf" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27%236366f1%27%2F%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27%237c3aed%27%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%279%27%20fill%3D%27url%28%23g%29%27%2F%3E%3Cg%20fill%3D%27%23fff%27%3E%3Crect%20x%3D%277%27%20y%3D%277%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%2F%3E%3Crect%20x%3D%2713.25%27%20y%3D%2713.25%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%2F%3E%3Crect%20x%3D%2719.5%27%20y%3D%2719.5%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%2F%3E%3Crect%20x%3D%2713.25%27%20y%3D%277%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%20opacity%3D%27.3%27%2F%3E%3Crect%20x%3D%2719.5%27%20y%3D%277%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%20opacity%3D%27.3%27%2F%3E%3Crect%20x%3D%2719.5%27%20y%3D%2713.25%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%20opacity%3D%27.3%27%2F%3E%3Crect%20x%3D%277%27%20y%3D%2713.25%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%20opacity%3D%27.3%27%2F%3E%3Crect%20x%3D%277%27%20y%3D%2719.5%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%20opacity%3D%27.3%27%2F%3E%3Crect%20x%3D%2713.25%27%20y%3D%2719.5%27%20width%3D%275.5%27%20height%3D%275.5%27%20rx%3D%271.6%27%20opacity%3D%27.3%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" />
 
@@ -44,11 +66,16 @@
 {
   "@context": "https://schema.org",
   "@type": "ScholarlyArticle",
+  "@id": "https://doi.org/10.18653/v1/2026.acl-long.311",
   "name": "Empirical Analysis of Decoding Biases in Masked Diffusion Models",
+  "alternateName": ["UNCODE", "PC-Sampler", "PC-Sampler: Position-Aware Calibration of Decoding Bias in Masked Diffusion Models"],
   "headline": "Empirical Analysis of Decoding Biases in Masked Diffusion Models",
+  "description": "UNCODE (previously released as PC-Sampler, arXiv 2508.13021 v1) is a training-free decoding-calibration method for masked diffusion language models such as LLaDA and Dream that fixes two decoding biases of uncertainty-based samplers, improving reasoning and planning by over 7% across 3 MDMs and 7 benchmarks.",
   "abstract": "Uncertainty-based decoding strategies induce two decoding biases in masked diffusion models — a rigid boundary bias and a trivial token bias. UNCODE (UNmasking Calibration for DecOding DEbiasing) is a training-free decoding-calibration framework that regularizes uncertainty-based decoding with two complementary priors, improving reasoning and planning by more than 7% across three MDMs and seven benchmarks.",
   "inLanguage": "en",
-  "keywords": "masked diffusion models, decoding bias, unmasking calibration, UNCODE, non-autoregressive generation, reasoning",
+  "keywords": "masked diffusion models, diffusion language models, decoding bias, unmasking calibration, UNCODE, PC-Sampler, LLaDA, Dream, non-autoregressive generation, reasoning",
+  "datePublished": "2026-07",
+  "image": "https://passionate11.github.io/Uncode-project-page/static/images/fig1_teaser.png",
   "author": [
     { "@type": "Person", "@id": "https://passionate11.github.io/#person", "name": "Pengcheng Huang", "url": "https://passionate11.github.io/" },
     { "@type": "Person", "name": "Tianming Liu" },
@@ -59,9 +86,10 @@
     { "@type": "Person", "name": "Zulong Chen" },
     { "@type": "Person", "name": "Maosong Sun" }
   ],
-  "identifier": "arXiv:2508.13021",
+  "identifier": ["doi:10.18653/v1/2026.acl-long.311", "arXiv:2508.13021"],
   "url": "https://aclanthology.org/2026.acl-long.311/",
-  "sameAs": ["https://arxiv.org/abs/2508.13021", "https://aclanthology.org/2026.acl-long.311/"],
+  "sameAs": ["https://aclanthology.org/2026.acl-long.311/", "https://doi.org/10.18653/v1/2026.acl-long.311", "https://arxiv.org/abs/2508.13021", "https://huggingface.co/papers/2508.13021", "https://github.com/NEUIR/Uncode"],
+  "codeRepository": "https://github.com/NEUIR/Uncode",
   "isPartOf": {
     "@type": "PublicationEvent",
     "name": "The 64th Annual Meeting of the Association for Computational Linguistics (ACL 2026)"
@@ -427,10 +455,12 @@
     year = "2026",
     publisher = "Association for Computational Linguistics",
     url = "https://aclanthology.org/2026.acl-long.311/",
+    doi = "10.18653/v1/2026.acl-long.311",
     pages = "6853--6876",
     ISBN = "979-8-89176-390-6",
 }</pre>
     </div>
+    <p class="bib-note" data-i18n="bib.note" style="margin:14px auto 0;max-width:760px;text-align:center;font-size:14px;color:var(--ink-faint)">UNCODE was previously released as <strong>PC-Sampler</strong> (Position-aware Calibration of Decoding Bias, <a href="https://arxiv.org/abs/2508.13021v1" target="_blank" rel="noopener">arXiv 2508.13021 v1</a>). Please cite the ACL 2026 version above.</p>
   </div>
 </section>
 
