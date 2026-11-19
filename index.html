@@ -439,6 +439,9 @@
       </table>
     </div>
     <p class="tnote" data-i18n="tnote.2">Results on LLaDA-8B-Instruct. Speedup is relative to vanilla full-step decoding.</p>
+
+    <h3 class="subhead" id="baseline">Use UNCODE as a decoding baseline</h3>
+    <p class="lead">To compare unmasking strategies on a fixed model, start with LLaDA-8B-Instruct on MATH-500. The <a href="https://github.com/NEUIR/Uncode#compare-uncode-with-confidence-decoding-on-math-500">README evaluation recipe</a> runs confidence decoding and UNCODE with the same checkpoint, prompt, and decoding budget. <a href="https://aclanthology.org/2026.acl-long.311.pdf#page=7">Table 1 of the ACL paper</a> reports 20.8% and 34.8% accuracy, respectively. To adapt your own sampler, see Section 4.2 for the unmasking score and Appendix A.8 for the combinations with efficient decoders.</p>
   </div>
 </section>
 
@@ -515,6 +518,7 @@
     <p><strong>UNCODE：掩码扩散模型中解码偏差的实证分析</strong>（ACL 2026 主会），第一作者为东北大学黄鹏程（Pengcheng Huang），通讯作者为刘正皓，合作单位包括清华大学和阿里巴巴。</p>
     <p>掩码扩散模型（如 LLaDA、Dream）通过迭代去掩码生成文本，去掩码的顺序决定生成质量。论文发现，常用的基于不确定性的解码会带来两种偏差：刚性边界偏差（先解码边界，答案在推理之前就被确定）和平凡词元偏差（标点、空格等低信息量词元被过度优先）。</p>
     <p>UNCODE（arXiv 早期版本名为 PC-Sampler）是一种免训练的解码校准方法：在原有不确定性分数上乘以位置轨迹先验和语义信息量先验。在 LLaDA-8B-Instruct、LLaDA-1.5-8B、Dream-7B 三个模型和七个代码、数学、科学、规划基准上，它比现有解码策略高出 7% 以上；LLaDA-1.5-8B 加上 UNCODE 后的平均分（44.7）与自回归模型 Qwen-2.5-7B（45.3）相当。代码见 GitHub NEUIR/Uncode。</p>
+    <p>想用 UNCODE 做解码基线，可以从 <a href="https://github.com/NEUIR/Uncode#compare-uncode-with-confidence-decoding-on-math-500">MATH-500 对照命令</a>开始。同一个 LLaDA-8B-Instruct 检查点、同一套提示词和解码预算下，<a href="https://aclanthology.org/2026.acl-long.311.pdf#page=7">论文表 1</a>报告的置信度采样与 UNCODE 准确率分别为 20.8% 和 34.8%。</p>
   </div>
 </section>
 
